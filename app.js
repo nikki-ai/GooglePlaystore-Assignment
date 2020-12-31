@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
 const apps = require('./Playstore.js');
+
+app.use(morgan('common'));
 
 app.get('/', (req, res) => {
   res.send('Google Playstore assignment');
@@ -53,6 +56,4 @@ app.get('/apps', (req, res) => {
   res.json(results);
 });
 
-app.listen(8000, () => {
-  console.log('Express server is listening on port 8000!');
-});
+module.exports = app;
